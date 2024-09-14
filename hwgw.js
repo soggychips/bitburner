@@ -122,7 +122,7 @@ function find_best_target(ns){
 export async function main(ns) {
 
   const args = ns.flags([["limited", false], ['times', 1], ['tail', false], ['help', true]]); // pass --limited if wanting to run a certain number of batches
-  if (flags._.length === 0 || flags.help) {
+  if (args.help) {
         ns.tprint("This script run batches against a target given or the best target based on find_best_targets");
         ns.tprint(`USAGE: run ${ns.getScriptName()} SERVER_NAME`);
         ns.tprint("Examples:");
