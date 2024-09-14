@@ -121,7 +121,7 @@ function find_best_target(ns){
 
 export async function main(ns) {
 
-  const args = ns.flags([["limited", false], ['times', 1], ['tail', false], ['help', false]]); // pass --limited if wanting to run a certain number of batches
+  const args = ns.flags([["limited", false], ['times', 1], ['help', false]]); // pass --limited if wanting to run a certain number of batches
   if (args.help) {
         ns.tprint("This script run batches against a target given or the best target based on find_best_targets");
         ns.tprint(`USAGE: run ${ns.getScriptName()} SERVER_NAME`);
@@ -133,9 +133,6 @@ export async function main(ns) {
 
   ns.disableLog("ALL")
   ns.clearLog()
-  if(args.tail){
-    ns.tail()
-  }
   
 
   let controlled_servers = getAllServers(ns, true).map(s => new BaseServer(ns, s)).filter(s => s.admin || s.purchased);
